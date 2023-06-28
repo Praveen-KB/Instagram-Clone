@@ -17,7 +17,7 @@ function App(): JSX.Element {
 
       <View style={styles.sectionContainer}>
         <Text>
-          Hi Lets Start the App Here Testing multiBranch
+          Hi Lets Start the App Here
         </Text>
       </View>
 
