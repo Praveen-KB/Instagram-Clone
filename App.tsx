@@ -9,7 +9,7 @@ import CommentsScreen from './src/screens/CommentsScreen/CommentsScreen';
 function App(): JSX.Element {
   return (
     <View style={styles.application}>
-      <HomeScreen />
+      <CommentsScreen />
     </View>
   );
 }
@@ -17,7 +17,7 @@ function App(): JSX.Element {
 const {width, height} = Dimensions.get('window');
 
 const styles = StyleSheet.create({
-  application: {},
+  application: {height},
 });
 
 export default App;
