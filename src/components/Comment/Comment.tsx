@@ -10,7 +10,6 @@ interface ICommentProps {
 }
 
 const Comment = ({comment}: ICommentProps) => {
-  console.log('comment', comment);
   return (
     <View>
       <View style={styles.comment}>

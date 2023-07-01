@@ -7,7 +7,6 @@ import posts from '../../assets/data/posts.json';
 
 export default function HomeScreen() {
   const [activePostId, setActivePostId] = useState<string | null>(null);
-  console.log('activePostId', activePostId);
   const onViewableItemsChanged = useRef(
     ({viewableItems}: {viewableItems: Array<ViewToken>}) => {
       viewableItems.length > 0 && setActivePostId(viewableItems[0].item.id);

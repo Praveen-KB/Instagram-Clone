@@ -53,6 +53,7 @@ const Carousel = ({images, onDoublePress}: ICarousel) => {
         style={{
           flexDirection: 'row',
           justifyContent: 'center',
+          alignItems: 'center',
           position: 'absolute',
           bottom: 0,
           width: '100%',
@@ -60,7 +61,7 @@ const Carousel = ({images, onDoublePress}: ICarousel) => {
         {images.map((e, i) => (
           <View
             style={{
-              width: 5,
+              width: activeImageIndex === i ? 7 : 5,
               aspectRatio: 1,
               borderRadius: 5,
               backgroundColor:

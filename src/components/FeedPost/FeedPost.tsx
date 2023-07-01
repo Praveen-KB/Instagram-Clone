@@ -50,7 +50,6 @@ function FeedPost({post, isVisible}: IFeedPost): JSX.Element {
   } else if (post.images) {
     content = <Carousel images={post.images} onDoublePress={toggleLike} />;
   } else if (post.video) {
-    console.log('isVisible', isVisible);
     content = (
       <DoublePressable onDoublePress={toggleLike}>
         <VideoPlayer uri={post.video} paused={!isVisible} />

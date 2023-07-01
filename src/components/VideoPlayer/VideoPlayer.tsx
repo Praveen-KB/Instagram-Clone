@@ -1,5 +1,5 @@
 import {StyleSheet, Text, Pressable, View} from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Video from 'react-native-video';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import colors from '../../theme/colors';
@@ -12,6 +12,11 @@ const VideoPlayer = ({uri, paused}: IVideoPlayer) => {
   const [muted, setMuted] = useState(true);
   const [remainingDuration, setRemainingDuration] = useState<string>('00:00');
   const [isPaused, setIsPaused] = useState(false);
+
+  useEffect(() => {
+    setIsPaused(paused);
+  }, [paused]);
+
   function formatTime(seconds: number) {
     const hours = Math.floor(seconds / 3600);
     const minutes = Math.floor((seconds % 3600) / 60);
