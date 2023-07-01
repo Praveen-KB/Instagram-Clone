@@ -9,7 +9,7 @@ import CommentsScreen from './src/screens/CommentsScreen/CommentsScreen';
 function App(): JSX.Element {
   return (
     <View style={styles.application}>
-      <CommentsScreen />
+      <HomeScreen />
     </View>
   );
 }
