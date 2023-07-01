@@ -20,11 +20,13 @@ import Comment from '../Comment/Comment';
 import {IPost} from '../../Types/models';
 import DoublePressable from '../DoublePressable';
 import Carousel from '../Carousel/Carousel';
+import VideoPlayer from '../VideoPlayer/VideoPlayer';
 interface IFeedPost {
   post: IPost;
+  isVisible: boolean;
 }
 
-function FeedPost({post}: IFeedPost): JSX.Element {
+function FeedPost({post, isVisible}: IFeedPost): JSX.Element {
   const [isDescriptionExpanded, setisDescriptionExpanded] = useState(false);
   const [liked, setLiked] = useState(false);
   const toggleDesExpanded = () => {
@@ -47,6 +49,13 @@ function FeedPost({post}: IFeedPost): JSX.Element {
     );
   } else if (post.images) {
     content = <Carousel images={post.images} onDoublePress={toggleLike} />;
+  } else if (post.video) {
+    console.log('isVisible', isVisible);
+    content = (
+      <DoublePressable onDoublePress={toggleLike}>
+        <VideoPlayer uri={post.video} paused={!isVisible} />
+      </DoublePressable>
+    );
   }
 
   return (
@@ -88,7 +97,7 @@ function FeedPost({post}: IFeedPost): JSX.Element {
         </View>
         {/* Likes */}
         <Text style={styles.text}>
-          Loved by <Text style={styles.bold}>Vinothini</Text> and{' '}
+          Loved by <Text style={styles.bold}>{post.user.name}</Text> and{' '}
           <Text style={styles.bold}>{post.nofLikes} others</Text>
         </Text>
 

@@ -22,7 +22,6 @@ const Carousel = ({images, onDoublePress}: ICarousel) => {
 
   const onViewableItemsChanged = useRef(
     ({viewableItems}: {viewableItems: Array<ViewToken>}) => {
-      console.log(viewableItems);
       viewableItems.length > 0 &&
         setActiveImageIndex(viewableItems[0].index || 0);
     },
