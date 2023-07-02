@@ -8,10 +8,11 @@ import HomeScreen from './src/screens/HomeScreen/HomeScreen';
 import CommentsScreen from './src/screens/CommentsScreen/CommentsScreen';
 import ProfileScreen from './src/screens/ProfileScreen/ProfileScreen';
 import EditProfileScreen from './src/screens/EditProfileScreen/EditProfileScreen';
+import PostUploadScreen from './src/screens/PostUploadScreen/PostUploadScreen';
 function App(): JSX.Element {
   return (
     <View style={styles.application}>
-      <EditProfileScreen />
+      <PostUploadScreen />
     </View>
   );
 }
