@@ -36,8 +36,6 @@ const CustomInput = ({
       name={name}
       rules={rules}
       render={({field: {onChange, value, onBlur}, fieldState: {error}}) => {
-        console.log(name, error);
-
         return (
           <View style={styles.inputContainer}>
             <Text style={styles.label}>{label}</Text>
