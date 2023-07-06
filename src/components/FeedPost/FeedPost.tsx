@@ -21,6 +21,8 @@ import {IPost} from '../../Types/models';
 import DoublePressable from '../DoublePressable';
 import Carousel from '../Carousel/Carousel';
 import VideoPlayer from '../VideoPlayer/VideoPlayer';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 interface IFeedPost {
   post: IPost;
   isVisible: boolean;
@@ -33,6 +35,8 @@ function FeedPost({post, isVisible}: IFeedPost): JSX.Element {
     setisDescriptionExpanded(v => !v);
   };
   const toggleLike = () => setLiked(v => !v);
+
+  const navigation = useNavigation<NativeStackNavigationProp<any>>();
 
   let content = null;
 
@@ -56,6 +60,11 @@ function FeedPost({post, isVisible}: IFeedPost): JSX.Element {
       </DoublePressable>
     );
   }
+  console.log(navigation);
+
+  const navigateToUser = () => {
+    navigation.navigate('UserProfile', {userId: post.user.id});
+  };
 
   return (
     <View style={[styles.post]}>
@@ -67,7 +76,9 @@ function FeedPost({post, isVisible}: IFeedPost): JSX.Element {
           }}
           style={styles.userAvatar}
         />
-        <Text style={styles.userName}>{post.user.username}</Text>
+        <Text onPress={navigateToUser} style={styles.userName}>
+          {post.user.username}
+        </Text>
         <Entypo
           name="dots-three-horizontal"
           size={16}

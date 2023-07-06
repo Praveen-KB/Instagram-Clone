@@ -57,22 +57,27 @@ const PostUploadScreen = () => {
     if (!isCameraReady || !camera.current || isRecording) {
       return;
     }
-
+    setIsRecording(e => !e);
     const options: RecordVideoOptions = {
       onRecordingError: e => {
         console.log(e);
         setIsCameraReady(e => !e);
+        setIsRecording(e => !e);
       },
       onRecordingFinished: e => {
         console.log(e);
         setIsCameraReady(e => !e);
+        setIsRecording(e => !e);
       },
     };
     camera.current.startRecording(options);
   };
   const stopRecording = async () => {
     setIsCameraReady(e => !e);
-    await camera.current?.stopRecording();
+    await camera.current?.stopRecording().catch(() => {
+      setIsCameraReady(e => !e);
+      setIsRecording(e => !e);
+    });
   };
 
   if (camera == null || hasPermission === null)
